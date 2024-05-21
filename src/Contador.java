@@ -12,9 +12,22 @@ public class Contador {
         System.out.print("Digite o segundo parâmetro: ");
         int parametroDois = scanner.nextInt();
 
+        try {
+            contar(parametroUm, parametroDois);
+        }
+        catch (ParametrosInvalidosException exception){
+            System.out.println("Erro ao digitar parametros: " + exception.getMessage());
 
-        System.out.println("Primeiro parâmetro: " + parametroUm);
-        System.out.println("Segundo parâmetro: " + parametroDois);
+        }
+    }
 
+    static void contar(int parametroUm, int parametrodois) throws ParametrosInvalidosException {
+        if(parametrodois < parametroUm) {
+            throw  new ParametrosInvalidosException("O Segundo parametro tem que ser maior que o Primeiro");
+        }
+        int contagem = parametrodois - parametroUm;
+        for(int i = 0 ; i<contagem ; i++){
+            System.out.println(i+1);
+        }
     }
 }
